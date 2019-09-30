@@ -3,7 +3,7 @@ function buildMetadata(sample) {
   // @TODO: Complete the following function that builds the metadata panel
 
   // Use `d3.json` to fetch the metadata for a sample
-  var url = `http://127.0.0.1:5000/metadata/${sample}`;
+  var url = `/metadata/${sample}`;
   d3.json(url).then(function(sample){  
     // Use d3 to select the panel with id of `#sample-metadata`
     var sample_metadata = d3.select("#sample-metadata");
@@ -30,7 +30,7 @@ function buildCharts(sample) {
 
   // @TODO: Use `d3.json` to fetch the sample data for the plots
   
-  var url = `http://127.0.0.1:5000/samples/${sample}`;
+  var url = `/samples/${sample}`;
   d3.json(url).then(function(data) {
     // @TODO: Build a Bubble Chart using the sample data
     var x_values = data.otu_ids;
@@ -107,7 +107,7 @@ function buildCharts(sample) {
     // buildGauge(data.WFREQ);
     // d3.json(url).then(function(data){
   
-  var url = `http://127.0.0.1:5000/metadata/${sample}`;
+  var url = `/metadata/${sample}`;
   d3.json(url).then(function(data) { 
 
     //Frequency of scrubs per week is between 1 and 9
@@ -184,7 +184,7 @@ function init() {
   var selector = d3.select("#selDataset");
 
   // Use the list of sample names to populate the select options
-  d3.json("http://127.0.0.1:5000/names").then((sampleNames) => {
+  d3.json("/names").then((sampleNames) => {
     sampleNames.forEach((sample) => {
       selector
         .append("option")
